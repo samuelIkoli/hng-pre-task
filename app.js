@@ -34,7 +34,6 @@ const csvResult = `${filePath.split('.')[0]}.output.csv`;
 
             for (let attr of attributesArr) {
                 const attrSplit = attr.split(':');
-                console.log('attr split: ', attrSplit);
                 if (attrSplit[0] && attrSplit[1]) {
                     attrFormattedArr.push(
                         formatChip007Keys({
@@ -63,9 +62,8 @@ const csvResult = `${filePath.split('.')[0]}.output.csv`;
             }
             console.log('file written successfully');
 
-            // calculate sha256 hash of json file
             const hash = generateHash(jsonResult);
-            console.log('Generated hash: ', hash);
+            console.log('Done with hash');
 
             for (let obj of jsonArray) {
                 obj['Hash'] = hash;
@@ -79,9 +77,6 @@ const csvResult = `${filePath.split('.')[0]}.output.csv`;
                     return;
                 }
 
-                console.log(
-                    `Output CSV generated successfully at ${__dirname}\\${csvResult}`
-                );
             });
         }
     );
